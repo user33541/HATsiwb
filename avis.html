@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Avis et Commentaires - HATONYME</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Style global */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: white;
+            color: black;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        /* En-tête */
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+
+        h1 {
+            font-size: 2em;
+            color: #333;
+            text-align: center;
+            margin: 0;
+        }
+
+        .logo {
+            width: 50px;
+            height: auto;
+            margin-right: 15px;
+        }
+
+        /* Section Avis et Notes */
+        .reviews-section {
+            margin-top: 20px;
+            text-align: left;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+
+        .reviews-section h2 {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .comment {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 20px;
+        }
+
+        .comment img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .comment .name {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .comment .stars img {
+            width: 18px;
+            height: auto;
+            margin-right: 5px;
+        }
+
+        .comment .price {
+            font-size: 1.2em;
+            color: #4CAF50;
+            margin-left: 15px;
+        }
+
+        .comment p {
+            font-size: 1em;
+            color: #555;
+        }
+
+        /* Réponse du vendeur */
+        .seller-response {
+            display: flex;
+            align-items: flex-start;
+            margin-top: 15px;
+            padding-left: 50px;
+            padding-right: 50px;
+            border-left: 4px solid #4CAF50;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .seller-response img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .seller-response .name {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .seller-response h3 {
+            font-size: 1.4em;
+            color: #4CAF50;
+        }
+
+        .seller-response p {
+            font-size: 1em;
+            color: #444;
+            margin-top: 10px;
+        }
+
+        /* Formulaire */
+        .form-section {
+            margin-top: 40px;
+            text-align: left;
+            margin-left: 5%;
+            margin-right: 5%;
+            padding: 20px;
+            border-top: 2px solid #ccc;
+        }
+
+        .form-section h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .form-section input, .form-section textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-section button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-section button:hover {
+            background-color: #45a049;
+        }
+
+        /* Etoile dorée pour le formulaire */
+        .form-section .star {
+            font-size: 30px;
+            color: gold;
+        }
+
+        /* Sélecteur de note */
+        .form-section .rating-select {
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+        }
+
+        /* Message de confirmation */
+        .confirmation-message {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: green;
+            display: none;
+        }
+
+        /* Bouton retour à l'accueil */
+        .back-to-home-btn {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .back-to-home-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Adaptation mobile */
+        @media screen and (max-width: 600px) {
+            .reviews-section, .form-section {
+                margin-left: 10%;
+                margin-right: 10%;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .comment {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
+            }
+
+            .comment img {
+                margin-bottom: 10px;
+            }
+
+            .seller-response {
+                flex-direction: column;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            .form-section input, .form-section textarea {
+                padding: 8px;
+            }
+
+            .form-section button {
+                font-size: 1em;
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- En-tête avec logo et titre -->
+    <header>
+        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F014%2F179%2F558%2Foriginal%2Fcertificate-icons-design-in-blue-circle-png.png&f=1&nofb=1&ipt=e523e5d1e4e62643cfa6686d9d90b1963fde09bf2d72531495f132d6d13a1520&ipo=images" alt="Logo" class="logo">
+        <h1>HATONYME</h1>
+    </header>
+    <a href="index.html" class="back-to-home-btn">Retour à l'accueil</a>
+    
+    <!-- Avis et Notes --> 
+    <section class="reviews-section">
+        <h2>Avis et Notes</h2>
+        
+        <!-- Client 1 -->
+        <div class="comment">
+            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.rawpixel.com%2Fimage_png_800%2FcHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTAxL3JtNjA5LXNvbGlkaWNvbi13LTAwMi1wLnBuZw.png&f=1&nofb=1&ipt=5f0fb9e97ff4520adc62e0df1451c771c54b25594452dddf6c1d319afae53b0f&ipo=images" alt="Avatar" class="avatar">
+            <div>
+                <span class="name">bestDZ</span>
+                <div class="stars">
+                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpng.pngtree.com%2Fpng-vector%2F20220926%2Fourmid%2Fpngtree-shiny-gold-star-clipart-illustration-design-png-image_6216956.png&f=1&nofb=1&ipt=724a258fb2f765243bfde393dd1152b4e0cf4b1cf029270f8a2a638e313ff103&ipo=images" alt="Star">
+                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpng.pngtree.com%2Fpng-vector%2F20220926%2Fourmid%2Fpngtree-shiny-gold-star-clipart-illustration-design-png-image_6216956.png&f=1&nofb=1&ipt=724a258fb2f765243bfde393dd1152b4e0cf4b1cf029270f8a2a638e313ff103&ipo=images" alt="Star">
+                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpng.pngtree.com%2Fpng-vector%2F20220926%2Fourmid%2Fpngtree-shiny-gold-star-clipart-illustration-design-png-image_6216956.png&f=1&nofb=1&ipt=724a258fb2f765243bfde393dd1152b4e0cf4b1cf029270f8a2a638e313ff103&ipo=images" alt="Star">
+                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpng.pngtree.com%2Fpng-vector%2F20220926%2Fourmid%2Fpngtree-shiny-gold-star-clipart-illustration-design-png-image_6216956.png&f=1&nofb=1&ipt=724a258fb2f765243bfde393dd1152b4e0cf4b1cf029270f8a2a638e313ff103&ipo=images" alt="Star">
+                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpng.pngtree.com%2Fpng-vector%2F20220926%2Fourmid%2Fpngtree-shiny-gold-star-clipart-illustration-design-png-image_6216956.png&f=1&nofb=1&ipt=724a258fb2f765243bfde393dd1152b4e0cf4b1cf029270f8a2a638e313ff103&ipo=images" alt="Star">
+                </div>
+                <span class="price">Prix payé: 8€</span>
+                <p>J'ai récemment acheté un nom de domaine et tout s'est parfaitement passé. Le processus était facile et rapide, et le domaine correspond exactement à ce que je cherchais. Très satisfait de mon achat, merci !</p>
+            </div>
+            <!-- Réponse du vendeur -->
+            <div class="seller-response">
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F014%2F179%2F558%2Foriginal%2Fcertificate-icons-design-in-blue-circle-png.png&f=1&nofb=1&ipt=e523e5d1e4e62643cfa6686d9d90b1963fde09bf2d72531495f132d6d13a1520&ipo=images" alt="Avatar vendeur" class="avatar">
+                <div>
+                    <span class="name">Vendeur</span>
+                    <h3>Merci pour votre retour, bestDZ !</h3>
+                    <p>Merci beaucoup pour votre commentaire ! Nous sommes ravis que vous soyez satisfait de votre achat. N'hésitez pas à revenir vers nous si vous avez besoin d'autres services ou d'assistance. À bientôt !</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Client 2 -->
+        <div class="comment">
+            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.rawpixel.com%2Fimage_png_800%2FcHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTAxL3JtNjA5LXNvbGlkaWNvbi13LTAwMi1wLnBuZw.png&f=1&nofb=1&ipt=5f0fb9e97ff4520adc62e0df1451c771c54b25594452dddf6c1d319afae53b0f&ipo=images" alt="Avatar" class="avatar">
+            <div>
+                <span class="name">cliente123</span>
+                <div class="stars">
+                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpng.pngtree.com%2Fpng-vector%2F20220926%2Fourmid%2Fpngtree-shiny-gold-star-clipart-illustration-design-png-image_6216956.png&f=1&nofb=1&ipt=724a258fb2f765243bfde393dd1152b4e0cf4b1cf029270f8a2a638e313ff103&ipo=images" alt="Star">
+                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpng.pngtree.com%2Fpng-vector%2F20220926%2Fourmid%2Fpngtree-shiny-gold-star-clipart-illustration-design-png-image_6216956.png&f=1&nofb=1&ipt=724a258fb2f765243bfde393dd1152b4e0cf4b1cf029270f8a2a638e313ff103&ipo=images" alt="Star">
+                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpng.pngtree.com%2Fpng-vector%2F20220926%2Fourmid%2Fpngtree-shiny-gold-star-clipart-illustration-design-png-image_6216956.png&f=1&nofb=1&ipt=724a258fb2f765243bfde393dd1152b4e0cf4b1cf029270f8a2a638e313ff103&ipo=images" alt="Star">
+                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpng.pngtree.com%2Fpng-vector%2F20220926%2Fourmid%2Fpngtree-shiny-gold-star-clipart-illustration-design-png-image_6216956.png&f=1&nofb=1&ipt=724a258fb2f765243bfde393dd1152b4e0cf4b1cf029270f8a2a638e313ff103&ipo=images" alt="Star">
+                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpng.pngtree.com%2Fpng-vector%2F20220926%2Fourmid%2Fpngtree-shiny-gold-star-clipart-illustration-design-png-image_6216956.png&f=1&nofb=1&ipt=724a258fb2f765243bfde393dd1152b4e0cf4b1cf029270f8a2a638e313ff103&ipo=images" alt="Star">
+                </div>
+                <span class="price">Prix payé: 10€</span>
+                <p>Excellent service, la transaction était fluide et rapide. Je recommande ce site pour tous ceux qui cherchent un nom de domaine unique et fiable.</p>
+            </div>
+            <!-- Réponse du vendeur -->
+            <div class="seller-response">
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F014%2F179%2F558%2Foriginal%2Fcertificate-icons-design-in-blue-circle-png.png&f=1&nofb=1&ipt=e523e5d1e4e62643cfa6686d9d90b1963fde09bf2d72531495f132d6d13a1520&ipo=images" alt="Avatar vendeur" class="avatar">
+                <div>
+                    <span class="name">Vendeur</span>
+                    <h3>Merci pour votre feedback, cliente123 !</h3>
+                    <p>Nous vous remercions pour votre retour positif ! Nous sommes heureux que vous soyez satisfait de votre expérience d'achat. À très bientôt !</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulaire de commentaire -->
+    <section class="form-section">
+        <h3>Laissez un commentaire</h3>
+        <form action="#">
+            <input type="text" name="nom" placeholder="Votre nom" required>
+            <textarea name="commentaire" rows="5" placeholder="Votre commentaire" required></textarea>
+            <label for="note">Note :</label>
+            <select name="note" class="rating-select" required>
+                <option value="1">1 étoile</option>
+                <option value="2">2 étoiles</option>
+                <option value="3">3 étoiles</option>
+                <option value="4">4 étoiles</option>
+                <option value="5">5 étoiles</option>
+            </select>
+            <button type="submit">Envoyer votre commentaire</button>
+        </form>
+    </section>
+
+    <!-- Message de confirmation -->
+    <div class="confirmation-message">
+        Merci pour votre retour ! Votre commentaire a bien été pris en compte.
+    </div>
+</body>
+</html>
