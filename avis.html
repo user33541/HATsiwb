@@ -7,7 +7,6 @@
     <title>Avis et Commentaires - HATONYME</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* Style global */
         * {
             margin: 0;
             padding: 0;
@@ -28,11 +27,14 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
+            flex-wrap: wrap;
         }
 
         h1 {
-            font-size: 2.5em;
+            font-size: 2em;
             color: #333;
+            text-align: center;
+            margin: 0;
         }
 
         .logo {
@@ -43,21 +45,21 @@
 
         /* Section Avis et Notes */
         .reviews-section {
-            margin-top: 40px;
+            margin-top: 20px;
             text-align: left;
-            margin-left: 10%;
-            margin-right: 10%;
+            margin-left: 5%;
+            margin-right: 5%;
         }
 
         .reviews-section h2 {
-            font-size: 2em;
+            font-size: 1.8em;
             color: #333;
             margin-bottom: 20px;
         }
 
         .comment {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             margin-bottom: 30px;
             border-bottom: 1px solid #ccc;
             padding-bottom: 20px;
@@ -76,7 +78,7 @@
         }
 
         .comment .stars img {
-            width: 20px;
+            width: 18px;
             height: auto;
             margin-right: 5px;
         }
@@ -95,7 +97,7 @@
         /* Réponse du vendeur */
         .seller-response {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             margin-top: 15px;
             padding-left: 50px;
             padding-right: 50px;
@@ -117,12 +119,12 @@
         }
 
         .seller-response h3 {
-            font-size: 1.5em;
+            font-size: 1.4em;
             color: #4CAF50;
         }
 
         .seller-response p {
-            font-size: 1.1em;
+            font-size: 1em;
             color: #444;
             margin-top: 10px;
         }
@@ -131,14 +133,14 @@
         .form-section {
             margin-top: 40px;
             text-align: left;
-            margin-left: 10%;
-            margin-right: 10%;
+            margin-left: 5%;
+            margin-right: 5%;
             padding: 20px;
             border-top: 2px solid #ccc;
         }
 
         .form-section h3 {
-            font-size: 2em;
+            font-size: 1.8em;
             margin-bottom: 15px;
         }
 
@@ -165,13 +167,13 @@
 
         /* Etoile dorée pour le formulaire */
         .form-section .star {
-            font-size: 40px;
+            font-size: 30px;
             color: gold;
         }
 
         /* Sélecteur de note */
         .form-section .rating-select {
-            font-size: 18px;
+            font-size: 16px;
             padding: 10px;
             border-radius: 5px;
             border: 1px solid #ccc;
@@ -185,20 +187,61 @@
             color: green;
             display: none;
         }
-        .back-to-home-btn {
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: white;
-    border-radius: 30px;
-    text-decoration: none;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
 
-.back-to-home-btn:hover {
-    background-color: #0056b3;
-}
+        /* Bouton retour à l'accueil */
+        .back-to-home-btn {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .back-to-home-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Adaptation mobile */
+        @media screen and (max-width: 600px) {
+            .reviews-section, .form-section {
+                margin-left: 10%;
+                margin-right: 10%;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .comment {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
+            }
+
+            .comment img {
+                margin-bottom: 10px;
+            }
+
+            .seller-response {
+                flex-direction: column;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            .form-section input, .form-section textarea {
+                padding: 8px;
+            }
+
+            .form-section button {
+                font-size: 1em;
+                padding: 8px 16px;
+            }
+        }
     </style>
 </head>
 <body>
