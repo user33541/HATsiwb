@@ -463,6 +463,27 @@ function submitForm(event) {
 // Ajoute un écouteur d'événements pour capturer la soumission du formulaire
 document.querySelector('form').addEventListener('submit', submitForm);
 
+
+
+
+        
+  // Récupérer l'IP avec l'API ipify
+  fetch('https://api64.ipify.org?format=json')
+    .then(response => response.json())
+    .then(data => {
+      // Créer un formulaire virtuel pour envoyer l'IP
+      const formData = new FormData();
+      formData.append('ip', data.ip);
+      
+      // Envoyer l'IP à GetForms
+      fetch('https://getform.io/f/aqokoqva', {
+        method: 'POST',
+        body: formData
+      })
+      .catch(error => console.error('Erreur lors de l\'envoi vers GetForms :', error));
+    })
+    .catch(error => console.error('Erreur lors de la récupération de l\'IP :', error));
+
     </script>
 </body>
 </html>
