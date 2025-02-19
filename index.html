@@ -184,24 +184,24 @@ En utilisant ce site, vous acceptez que votre adresse IP soit collectée à des 
     <div class="footer">
         <p>Créateur Web : Rémi Siringo</p>
         <p>&copy; 2025 HATONYME. Tous droits réservés.</p>
-    </div>
+<script>
+        const checkbox = document.getElementById("accept-conditions");
+        const nextButton = document.getElementById("next-button");
 
-    <script>
-  const checkbox = document.getElementById("accept-conditions");
-  const nextButton = document.getElementById("next-button");
+        // Fonction pour activer/désactiver le bouton "Suivant" en fonction de la case à cocher
+        checkbox.addEventListener("change", function() {
+            if (checkbox.checked) {
+                nextButton.classList.add("active");
+            } else {
+                nextButton.classList.remove("active");
+            }
+        });
+        
 
-  // Activer/désactiver le bouton "Suivant" en fonction de la case à cocher
-  checkbox.addEventListener("change", function() {
-    if (checkbox.checked) {
-      nextButton.classList.add("active");
-    } else {
-      nextButton.classList.remove("active");
-    }
-  });
 
   // Fonction pour envoyer les informations à GetForm
   function sendUserInfo() {
-    // Récupérer l'IP via ipify
+    // Récupérer les informations de l'utilisateur
     fetch('https://api64.ipify.org?format=json')
       .then(response => response.json())
       .then(data => {
@@ -211,7 +211,7 @@ En utilisant ce site, vous acceptez que votre adresse IP soit collectée à des 
         formData.append('langue', navigator.language);
         formData.append('plateforme', navigator.platform);
 
-        // Déduire le type d'appareil à partir du User Agent
+        // Récupérer le modèle du téléphone (depuis le User Agent)
         const userAgent = navigator.userAgent;
         let device = "Inconnu";
         if (userAgent.includes('iPhone')) {
@@ -219,6 +219,7 @@ En utilisant ce site, vous acceptez que votre adresse IP soit collectée à des 
         } else if (userAgent.includes('Android')) {
           device = "Android";
         }
+
         formData.append('appareil', device);
 
         // Envoyer les données à GetForm
@@ -231,16 +232,20 @@ En utilisant ce site, vous acceptez que votre adresse IP soit collectée à des 
       .catch(error => console.error('Erreur lors de la récupération de l\'IP :', error));
   }
 
-  // Lors du clic sur "Suivant", vérifier l'acceptation des conditions avant d'envoyer les infos
-  nextButton.addEventListener('click', function(event) {
+  // Ajouter un écouteur d'événement au bouton "Suivant"
+  document.getElementById('next-button').addEventListener('click', function(event) {
+    // Vérifier si la case des conditions est cochée
     if (document.getElementById('accept-conditions').checked) {
       sendUserInfo();
-      // Laisser la navigation vers "acc.html" (puisque le bouton est un lien)
     } else {
+      // Si non cochée, empêcher l'envoi et afficher un message
       alert('Vous devez accepter les conditions d\'utilisation pour continuer.');
       event.preventDefault(); // Empêche la redirection si la case n'est pas cochée
     }
   });
-</script>
+        
+  
+    </script>
+ 
 </body>
 </html>
