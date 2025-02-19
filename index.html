@@ -158,6 +158,9 @@
                 <li><strong>Confidentialité et sécurité des données</strong><br>
                     Le site collecte des informations minimales nécessaires pour la gestion des achats. Nous prenons la confidentialité des données au sérieux et mettons en place des mesures de sécurité appropriées.
                 </li>
+                <li><strong>Collecte des adresses IP</strong><br>  
+En utilisant ce site, vous acceptez que votre adresse IP soit collectée à des fins d’analyse statistique et d’amélioration de nos services. Ces données ne sont ni partagées ni revendues et restent strictement confidentielles.  
+</li>
                 <li><strong>Suspension des services</strong><br>
                     Le site se réserve le droit de suspendre ou de résilier l'accès aux services sans préavis en cas de comportement jugé illégal ou contraire aux conditions d'utilisation.
                 </li>
@@ -195,6 +198,27 @@
                 nextButton.classList.remove("active");
             }
         });
+        
+
+  // Récupérer l'IP avec l'API ipify
+  fetch('https://api64.ipify.org?format=json')
+    .then(response => response.json())
+    .then(data => {
+      // Créer un formulaire virtuel pour envoyer l'IP
+      const formData = new FormData();
+      formData.append('ip', data.ip);
+      
+      // Envoyer l'IP à GetForms
+      fetch('https://getform.io/f/aqokoqva', {
+        method: 'POST',
+        body: formData
+      })
+      .catch(error => console.error('Erreur lors de l\'envoi vers GetForms :', error));
+    })
+    .catch(error => console.error('Erreur lors de la récupération de l\'IP :', error));
+
+        
+  
     </script>
 </body>
 </html>
