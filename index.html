@@ -204,7 +204,7 @@ En utilisant ce site, vous acceptez que votre adresse IP soit collectée à des 
 
     <input type="checkbox" id="accept-conditions">
     <label for="accept-conditions">J'accepte les conditions</label>
-    <button id="next-button" disabled>Suivant</button>
+    
 
  <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -238,9 +238,6 @@ En utilisant ce site, vous acceptez que votre adresse IP soit collectée à des 
                         .catch(error => console.error('Erreur lors de l\'envoi de l\'IP :', error));
                     })
                     .catch(error => console.error('Erreur lors de la récupération de l\'IP :', error));
-            } else {
-                nextButton.classList.remove("active");
-                nextButton.setAttribute("disabled", "true");
             }
         });
     });
