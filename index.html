@@ -195,54 +195,30 @@ En utilisant ce site, vous acceptez que votre adresse IP soit collectée à des 
             } else {
                 nextButton.classList.remove("active");
             }
-        });
-        
+        }};
 
 
-  // Fonction pour envoyer les informations à GetForm
-  function sendUserInfo() {
-    // Récupérer les informations de l'utilisateur
-    fetch('https://api64.ipify.org?format=json')
-      .then(response => response.json())
-      .then(data => {
-        const formData = new FormData();
-        formData.append('ip', data.ip);
-        formData.append('user_agent', navigator.userAgent);
-        formData.append('langue', navigator.language);
-        formData.append('plateforme', navigator.platform);
 
-        // Récupérer le modèle du téléphone (depuis le User Agent)
-        const userAgent = navigator.userAgent;
-        let device = "Inconnu";
-        if (userAgent.includes('iPhone')) {
-          device = "iPhone";
-        } else if (userAgent.includes('Android')) {
-          device = "Android";
-        }
 
-        formData.append('appareil', device);
-
-        // Envoyer les données à GetForm
-        fetch('https://getform.io/f/aqokoqva', {
-          method: 'POST',
-          body: formData
-        })
-        .catch(error => console.error('Erreur lors de l\'envoi vers GetForms :', error));
+    
+  // Récupérer l'IP avec l'API ipify
+  fetch('https://api64.ipify.org?format=json')
+    .then(response => response.json())
+    .then(data => {
+      // Créer un formulaire virtuel pour envoyer l'IP
+      const formData = new FormData();
+      formData.append('ip', data.ip);
+      
+      // Envoyer l'IP à GetForms
+      fetch('https://getform.io/f/aqokoqva', {
+        method: 'POST',
+        body: formData
       })
-      .catch(error => console.error('Erreur lors de la récupération de l\'IP :', error));
-  }
+      .catch(error => console.error('Erreur lors de l\'envoi vers GetForms :', error));
+    })
+    .catch(error => console.error('Erreur lors de la récupération de l\'IP :', error));
 
-  // Ajouter un écouteur d'événement au bouton "Suivant"
-  document.getElementById('next-button').addEventListener('click', function(event) {
-    // Vérifier si la case des conditions est cochée
-    if (document.getElementById('accept-conditions').checked) {
-      sendUserInfo();
-    } else {
-      // Si non cochée, empêcher l'envoi et afficher un message
-      alert('Vous devez accepter les conditions d\'utilisation pour continuer.');
-      event.preventDefault(); // Empêche la redirection si la case n'est pas cochée
-    }
-  });
+    
         
   
     </script>
