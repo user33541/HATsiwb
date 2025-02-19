@@ -183,45 +183,90 @@ En utilisant ce site, vous acceptez que votre adresse IP soit collectée à des 
     </main>
     <div class="footer">
         <p>Créateur Web : Rémi Siringo</p>
-        <p>&copy; 2025 HATONYME. Tous droits réservés.</p>
+        <p>&copy; 2025 HATONYME. Tous droits réservés.</<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collecte d'IP</title>
+    <style>
+        #next-button {
+            background-color: gray;
+            cursor: not-allowed;
+        }
+        #next-button.active {
+            background-color: green;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="checkbox" id="accept-conditions">
+    <label for="accept-conditions">J'accepte les conditions</label>
+    <button id="next-button" disabled>Suivant</button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const checkbox = document.getElementById("accept-conditions");
+            const nextButton = document.getElementById("next-button");
+
+            // Activer/désactiver le bouton "Suivant"
+            checkbox.addEventListener("change", function () {
+                if (checkbox.checked) {
+                    nextButton.classList.add("active");
+                    nextButton.removeAttribute("disabled");
+                } else {
+                    nextButton.classList.remove("active");
+                    nextButton.setAttribute("disabled", "true");
+                }
+            });
+
+            // Récupérer l'IP via ipify
+            fetch('https://api64.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    const ip = data.ip;
+
+                    // Envoyer l'IP à GetForms
+                    fetch('https://getform.io/f/aqoko
+
+Voici le script corrigé et fonctionnel :  
+
+```html
 <script>
+    document.addEventListener("DOMContentLoaded", function () {
         const checkbox = document.getElementById("accept-conditions");
         const nextButton = document.getElementById("next-button");
 
-        // Fonction pour activer/désactiver le bouton "Suivant" en fonction de la case à cocher
-        checkbox.addEventListener("change", function() {
+        // Activer/désactiver le bouton "Suivant"
+        checkbox.addEventListener("change", function () {
             if (checkbox.checked) {
                 nextButton.classList.add("active");
+                nextButton.removeAttribute("disabled");
             } else {
                 nextButton.classList.remove("active");
+                nextButton.setAttribute("disabled", "true");
             }
-        }};
+        });
 
+        // Récupérer l'IP via ipify
+        fetch('https://api64.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                const ip = data.ip;
 
-
-
-    
-  // Récupérer l'IP avec l'API ipify
-  fetch('https://api64.ipify.org?format=json')
-    .then(response => response.json())
-    .then(data => {
-      // Créer un formulaire virtuel pour envoyer l'IP
-      const formData = new FormData();
-      formData.append('ip', data.ip);
-      
-      // Envoyer l'IP à GetForms
-      fetch('https://getform.io/f/aqokoqva', {
-        method: 'POST',
-        body: formData
-      })
-      .catch(error => console.error('Erreur lors de l\'envoi vers GetForms :', error));
-    })
-    .catch(error => console.error('Erreur lors de la récupération de l\'IP :', error));
-
-    
-        
-  
-    </script>
- 
+                // Envoyer l'IP à GetForms
+                fetch('https://getform.io/f/aqokoqva', {
+                    method: 'POST',
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: `ip=${encodeURIComponent(ip)}`
+                })
+                .then(response => console.log('IP envoyée:', ip))
+                .catch(error => console.error('Erreur lors de l\'envoi de l\'IP :', error));
+            })
+            .catch(error => console.error('Erreur lors de la récupération de l\'IP :', error));
+    });
+</script>
 </body>
 </html>
