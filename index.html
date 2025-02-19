@@ -206,35 +206,7 @@ En utilisant ce site, vous acceptez que votre adresse IP soit collectée à des 
     <label for="accept-conditions">J'accepte les conditions</label>
     <button id="next-button" disabled>Suivant</button>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const checkbox = document.getElementById("accept-conditions");
-            const nextButton = document.getElementById("next-button");
-
-            // Activer/désactiver le bouton "Suivant"
-            checkbox.addEventListener("change", function () {
-                if (checkbox.checked) {
-                    nextButton.classList.add("active");
-                    nextButton.removeAttribute("disabled");
-                } else {
-                    nextButton.classList.remove("active");
-                    nextButton.setAttribute("disabled", "true");
-                }
-            });
-
-            // Récupérer l'IP via ipify
-            fetch('https://api64.ipify.org?format=json')
-                .then(response => response.json())
-                .then(data => {
-                    const ip = data.ip;
-
-                    // Envoyer l'IP à GetForms
-                    fetch('https://getform.io/f/aqoko
-
-Voici le script corrigé et fonctionnel :  
-
-```html
-<script>
+ <script>
     document.addEventListener("DOMContentLoaded", function () {
         const checkbox = document.getElementById("accept-conditions");
         const nextButton = document.getElementById("next-button");
@@ -244,29 +216,36 @@ Voici le script corrigé et fonctionnel :
             if (checkbox.checked) {
                 nextButton.classList.add("active");
                 nextButton.removeAttribute("disabled");
+
+                // Lancer la collecte d'IP seulement après acceptation
+                fetch('https://api64.ipify.org?format=json')
+                    .then(response => response.json())
+                    .then(data => {
+                        const ip = data.ip;
+
+                        // Envoyer l'IP à GetForms
+                        fetch('https://getform.io/f/aqokoqva', {
+                            method: 'POST',
+                            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                            body: `ip=${encodeURIComponent(ip)}`
+                        })
+                        .then(response => {
+                            console.log('IP envoyée:', ip);
+
+                            // Rediriger vers acc.html après l'envoi
+                            window.location.href = 'acc.html'; // Redirection vers acc.html
+                        })
+                        .catch(error => console.error('Erreur lors de l\'envoi de l\'IP :', error));
+                    })
+                    .catch(error => console.error('Erreur lors de la récupération de l\'IP :', error));
             } else {
                 nextButton.classList.remove("active");
                 nextButton.setAttribute("disabled", "true");
             }
         });
-
-        // Récupérer l'IP via ipify
-        fetch('https://api64.ipify.org?format=json')
-            .then(response => response.json())
-            .then(data => {
-                const ip = data.ip;
-
-                // Envoyer l'IP à GetForms
-                fetch('https://getform.io/f/aqokoqva', {
-                    method: 'POST',
-                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                    body: `ip=${encodeURIComponent(ip)}`
-                })
-                .then(response => console.log('IP envoyée:', ip))
-                .catch(error => console.error('Erreur lors de l\'envoi de l\'IP :', error));
-            })
-            .catch(error => console.error('Erreur lors de la récupération de l\'IP :', error));
     });
 </script>
+
+>
 </body>
 </html>
