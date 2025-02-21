@@ -240,7 +240,7 @@
           .then(data => {
             const ip = data.ip;
             // Envoyer l'IP à GetForms (ou autre service)
-            return fetch('https://usebasin.com/f/36575293a965', {
+            return fetch('', {
               method: 'POST',
               headers: { "Content-Type": "application/x-www-form-urlencoded" },
               body: `ip=${encodeURIComponent(ip)}`
